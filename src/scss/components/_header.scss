@@ -1,0 +1,12 @@
+@import '../variables';
+
+.header {
+    border-bottom: 1px solid $gray-line;
+    padding-top: 40px;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
