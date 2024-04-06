@@ -1,4 +1,3 @@
-import Header from './components/Header';
 import MainLayout from './layouts/MainLayout';
 import './scss/app.scss';
 

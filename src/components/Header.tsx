@@ -1,9 +1,11 @@
+import logoSvg from '../assets/img/pizza-logo.svg';
+
 const Header: React.FC = () => {
     return (
         <div className="header">
             <div className="container">
                 <div className="header-logo">
-                    <img width={38} src="#" alt="Pizza logo" />
+                    <img width="38" src={logoSvg} alt="Pizza logo" />
                     <div>
                         <h1 className="react-pizza">REACT PIZZA</h1>
                         <p>самая вкусная пицца во вселенной</p>

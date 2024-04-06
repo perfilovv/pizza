@@ -1,0 +1,51 @@
+@import '../variables';
+
+.button {
+    display: inline-block;
+    background-color: $orange;
+    border-radius: 30px;
+    padding: 10px 20px;
+    min-width: 100px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+    border: 1px solid transparent;
+    @include noselect();
+
+    span {
+        color: #fff;
+    }
+
+    &:hover {
+        background-color: darken($orange, 8%);
+    }
+
+    &:active {
+        background-color: darken($orange, 12%);
+        transform: translateY(1px);
+    }
+
+    &-delimiter {
+        width: 1px;
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.25);
+        margin: 0 14px;
+    }
+
+    &-cart {
+        display: flex;
+        align-items: center;
+        line-height: 23px;
+        padding: 12px 25px;
+    }
+
+    svg {
+        margin: 0px 8px 1px 0px;
+    }
+
+    span {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
+}
