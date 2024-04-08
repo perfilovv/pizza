@@ -23,6 +23,7 @@ const PizzaBlock = (props: IPizzaBlock): JSX.Element => {
                         <li
                             onClick={() => setActiveType(type)}
                             className={activeType === type ? 'active' : ''}
+                            key={type}
                         >
                             {typeOfPizza[type]}
                         </li>
@@ -33,6 +34,7 @@ const PizzaBlock = (props: IPizzaBlock): JSX.Element => {
                         <li
                             onClick={() => setActiveSize(i)}
                             className={activeSize === i ? 'active' : ''}
+                            key={i}
                         >
                             {size}
                         </li>

@@ -11,16 +11,12 @@ const Categories: FC = () => {
         'Закрытые',
     ];
 
-    function changeIndex(index: number) {
-        setActiveIndex(index);
-    }
-
     return (
         <div className="categories">
             <ul>
                 {categories.map((value, i) => (
                     <li
-                        onClick={() => changeIndex(i)}
+                        onClick={() => setActiveIndex(i)}
                         className={activeIndex === i ? 'active' : ''}
                         key={i}
                     >
