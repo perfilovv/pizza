@@ -31,15 +31,16 @@ const Sort: React.FC = () => {
 
             <div className="sort-popup">
                 <ul>
-                    {list.map((name, i) => (
-                        <li
-                            key={i}
-                            className={select === i ? 'active' : ''}
-                            onClick={() => onSelect(i)}
-                        >
-                            {name}
-                        </li>
-                    ))}
+                    {open &&
+                        list.map((name, i) => (
+                            <li
+                                key={i}
+                                className={select === i ? 'active' : ''}
+                                onClick={() => onSelect(i)}
+                            >
+                                {name}
+                            </li>
+                        ))}
                 </ul>
             </div>
         </div>
