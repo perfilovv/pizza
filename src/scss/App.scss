@@ -10,8 +10,32 @@ body {
     width: calc(100vw - 100px);
     height: 100%;
     background-color: #fff;
-    margin: 45px auto;
-    padding: 50px 56px;
+    margin: 50px auto;
     border-radius: 10px;
     max-width: 1400px;
+}
+
+.content {
+    padding: 40px 0;
+
+    &-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &-title {
+        margin: 35px 0;
+    }
+
+    &-items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+}
+
+.container {
+    width: $container-width;
+    margin: 0 auto;
 }
