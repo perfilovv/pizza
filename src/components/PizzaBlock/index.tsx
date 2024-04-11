@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
 interface IPizzaBlock {
-    imageUrl: string;
-    title: string;
-    price: number;
-    sizes: number[];
-    types: number[];
+    imageUrl?: string;
+    title?: string;
+    price?: number;
+    sizes?: number[];
+    types?: number[];
 }
 
-const PizzaBlock = (props: IPizzaBlock): JSX.Element => {
+const PizzaBlock = (props: IPizzaBlock) => {
     const { imageUrl, title, price, sizes, types } = props;
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
@@ -19,26 +19,28 @@ const PizzaBlock = (props: IPizzaBlock): JSX.Element => {
             <h4 className="pizza-block-title">{title}</h4>
             <div className="pizza-block-selector">
                 <ul>
-                    {types.map((type) => (
-                        <li
-                            onClick={() => setActiveType(type)}
-                            className={activeType === type ? 'active' : ''}
-                            key={type}
-                        >
-                            {typeOfPizza[type]}
-                        </li>
-                    ))}
+                    {types &&
+                        types.map((type) => (
+                            <li
+                                onClick={() => setActiveType(type)}
+                                className={activeType === type ? 'active' : ''}
+                                key={type}
+                            >
+                                {typeOfPizza[type]}
+                            </li>
+                        ))}
                 </ul>
                 <ul>
-                    {sizes.map((size, i) => (
-                        <li
-                            onClick={() => setActiveSize(i)}
-                            className={activeSize === i ? 'active' : ''}
-                            key={i}
-                        >
-                            {size}
-                        </li>
-                    ))}
+                    {sizes &&
+                        sizes.map((size, i) => (
+                            <li
+                                onClick={() => setActiveSize(i)}
+                                className={activeSize === i ? 'active' : ''}
+                                key={i}
+                            >
+                                {size}
+                            </li>
+                        ))}
                 </ul>
             </div>
             <div className="pizza-block-bottom">
