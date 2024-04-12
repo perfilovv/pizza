@@ -1,13 +1,11 @@
+import { useContext } from 'react';
 import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
+import { SearchContext } from '../../App';
+
 import styles from './Search.module.scss';
 
-const Search = ({
-    searchValue,
-    setSearchValue,
-}: {
-    searchValue: string;
-    setSearchValue: Function;
-}) => {
+const Search = () => {
+    const { searchValue, setSearchValue } = useContext(SearchContext);
     return (
         <div className={styles.root}>
             <IoSearchOutline className={styles.icon} />
