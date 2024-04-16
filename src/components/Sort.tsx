@@ -1,24 +1,24 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setSort } from '../redux/slices/filterSlice';
 
-const Sort = ({
-    value,
-    onChangeSort,
-}: {
-    value: any;
-    onChangeSort: Function;
-}) => {
+const list = [
+    { name: 'популярности (DESC)', sortProperty: 'rating' },
+    { name: 'популярности (ASC)', sortProperty: '-rating' },
+    { name: 'цене (DESC)', sortProperty: 'price' },
+    { name: 'цене (ASC)', sortProperty: '-price' },
+    { name: 'алфавиту (DESC)', sortProperty: 'title' },
+    { name: 'алфавиту (ASC)', sortProperty: '-title' },
+];
+
+const Sort = () => {
+    const dispatch = useDispatch();
+    const sort = useSelector((state: any) => state.filter.sort);
+
     const [open, setOpen] = useState(false);
-    const list = [
-        { name: 'популярности (DESC)', sortProperty: 'rating' },
-        { name: 'популярности (ASC)', sortProperty: '-rating' },
-        { name: 'цене (DESC)', sortProperty: 'price' },
-        { name: 'цене (ASC)', sortProperty: '-price' },
-        { name: 'алфавиту (DESC)', sortProperty: 'title' },
-        { name: 'алфавиту (ASC)', sortProperty: '-title' },
-    ];
 
-    function onClickListItem(i: any) {
-        onChangeSort(i);
+    function onClickListItem(obj: object) {
+        dispatch(setSort(obj));
         setOpen(false);
     }
     return (
@@ -37,7 +37,7 @@ const Sort = ({
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={() => setOpen(!open)}>{value.name}</span>
+                <span onClick={() => setOpen(!open)}>{sort.name}</span>
             </div>
 
             <div className="sort-popup">
@@ -47,7 +47,7 @@ const Sort = ({
                             <li
                                 key={i}
                                 className={
-                                    value.sortProperty === obj.sortProperty
+                                    sort.sortProperty === obj.sortProperty
                                         ? 'active'
                                         : ''
                                 }
