@@ -5,18 +5,25 @@ import PizzaBlock from '../components/PizzaBlock';
 import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryId } from '../redux/slices/filterSlice';
 
 const Home = () => {
+    const dispatch = useDispatch();
+    const categoryId = useSelector((state: any) => state.filter.categoryId);
     const { searchValue } = useContext(SearchContext);
 
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [categoryId, setCategoryId] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [sortType, setSortType] = useState({
         name: 'популярности',
         sortProperty: 'rating',
     });
+
+    const onChangeCategory = (id: number) => {
+        dispatch(setCategoryId(id));
+    };
 
     useEffect(() => {
         setIsLoading(true);
@@ -50,7 +57,7 @@ const Home = () => {
             <div className="content-top">
                 <Categories
                     value={categoryId}
-                    onChangeCategory={(i: number) => setCategoryId(i)}
+                    onChangeCategory={onChangeCategory}
                 />
                 <Sort
                     value={sortType}
