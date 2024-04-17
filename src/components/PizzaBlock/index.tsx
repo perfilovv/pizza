@@ -6,7 +6,7 @@ interface IPizzaBlock {
     imageUrl?: string;
     title?: string;
     price?: number;
-    sizes?: number[];
+    sizes?: any;
     types?: number[];
 }
 
@@ -30,7 +30,7 @@ const PizzaBlock = (props: IPizzaBlock) => {
             price,
             imageUrl,
             type: typeOfPizza[activeType],
-            size: activeSize,
+            size: sizes[activeSize],
         };
         dispatch(addItem(item));
     };
@@ -54,7 +54,7 @@ const PizzaBlock = (props: IPizzaBlock) => {
                 </ul>
                 <ul>
                     {sizes &&
-                        sizes.map((size, i) => (
+                        sizes.map((size: number, i: number) => (
                             <li
                                 onClick={() => setActiveSize(i)}
                                 className={activeSize === i ? 'active' : ''}

@@ -8,10 +8,11 @@ interface ICart {
     price: number;
     count: number;
     imageUrl: string;
+    size: number;
 }
 
 const CartItem = (props: ICart) => {
-    const { id, title, type, price, count, imageUrl } = props;
+    const { id, title, type, price, count, imageUrl, size } = props;
     const dispatch = useDispatch();
 
     const onClickPlus = () => {
@@ -38,7 +39,9 @@ const CartItem = (props: ICart) => {
             </div>
             <div className="cart-item-info">
                 <h3>{title}</h3>
-                <p>{type}, 26 см.</p>
+                <p>
+                    {type}, {size} см.
+                </p>
             </div>
             <div className="cart-item-count">
                 <div
