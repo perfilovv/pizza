@@ -42,7 +42,10 @@ const PizzaBlock = (props: IPizzaBlock) => {
                     {types &&
                         types.map((type) => (
                             <li
-                                onClick={() => setActiveType(type)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setActiveType(type);
+                                }}
                                 className={activeType === type ? 'active' : ''}
                                 key={type}
                             >
@@ -54,7 +57,10 @@ const PizzaBlock = (props: IPizzaBlock) => {
                     {sizes &&
                         sizes.map((size: number, i: number) => (
                             <li
-                                onClick={() => setActiveSize(i)}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setActiveSize(i);
+                                }}
                                 className={activeSize === i ? 'active' : ''}
                                 key={i}
                             >

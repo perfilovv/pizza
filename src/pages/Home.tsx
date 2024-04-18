@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
 import Categories from '../components/Categories';
@@ -76,7 +76,9 @@ const Home = () => {
     ));
 
     const pizzas = items.map((obj: any) => (
-        <PizzaBlock {...obj} key={obj.id} />
+        <Link key={obj.id} to={`/pizza/${obj.id}`}>
+            <PizzaBlock {...obj} />
+        </Link>
     ));
 
     return (
