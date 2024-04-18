@@ -8,13 +8,13 @@ import { useDispatch } from 'react-redux';
 
 const Search = () => {
     const dispatch = useDispatch();
-    const [value, setValue] = useState('');
-    const inputRef: any = useRef();
+    const [value, setValue] = useState<string>('');
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const onClickClear = () => {
         dispatch(setSearchValue(''));
         setValue('');
-        inputRef.current.focus();
+        inputRef.current?.focus();
     };
 
     const updateSearchValue = useCallback(
