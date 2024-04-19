@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import qs from 'qs';
@@ -17,7 +17,7 @@ import {
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 import { AppDispatch } from '../redux/store';
 
-const Home = () => {
+const Home: FC = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
     const isMounted = useRef(false);

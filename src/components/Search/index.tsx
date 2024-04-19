@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 import debounce from 'lodash.debounce';
 import { setSearchValue } from '../../redux/slices/filterSlice';
@@ -24,7 +24,7 @@ const Search = () => {
         []
     );
 
-    const onChangeInput = (event: any) => {
+    const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         updateSearchValue(event.target.value);
     };
