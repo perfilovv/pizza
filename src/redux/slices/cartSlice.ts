@@ -1,8 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
+export type CartItem = {
+    id: string;
+    title: string;
+    price: number;
+    imageUrl: string;
+    type: string;
+    size: number;
+    count: number;
+};
 export interface CartState {
-    totalPrice: string | number;
-    items: any;
+    totalPrice: number;
+    items: CartItem[];
 }
 
 const initialState: CartState = {
@@ -14,9 +24,9 @@ export const cartSlice = createSlice({
     name: 'filter',
     initialState,
     reducers: {
-        addItem(state, action) {
+        addItem(state, action: PayloadAction<CartItem>) {
             const findItem = state.items.find(
-                (obj: any) => obj.id === action.payload.id
+                (obj) => obj.id === action.payload.id
             );
 
             if (findItem) {
@@ -34,7 +44,7 @@ export const cartSlice = createSlice({
             );
         },
 
-        minusItem(state, action) {
+        minusItem(state, action: PayloadAction<string>) {
             const findItem = state.items.find(
                 (obj: any) => obj.id === action.payload
             );
@@ -44,7 +54,7 @@ export const cartSlice = createSlice({
             }
         },
 
-        removeItem(state, action) {
+        removeItem(state, action: PayloadAction<string>) {
             state.items = state.items.filter(
                 (obj: any) => obj.id !== action.payload
             );
@@ -56,9 +66,9 @@ export const cartSlice = createSlice({
     },
 });
 
-export const selectCart = (state: any) => state.cart;
-export const selectCartItemById = (id: string) => (state: any) =>
-    state.cart.items.find((obj: any) => obj.id === id);
+export const selectCart = (state: RootState) => state.cart;
+export const selectCartItemById = (id: string) => (state: RootState) =>
+    state.cart.items.find((obj) => obj.id === id);
 
 export const { addItem, minusItem, removeItem, clearItems } = cartSlice.actions;
 
