@@ -5,6 +5,7 @@ import {
     addItem,
     selectCartItemById,
 } from '../../redux/slices/cartSlice';
+import { Link } from 'react-router-dom';
 interface IPizzaBlock {
     id: string;
     imageUrl: string;
@@ -41,15 +42,16 @@ const PizzaBlock: FC<IPizzaBlock> = (props) => {
 
     return (
         <div className="pizza-block">
-            <img src={imageUrl} alt="Pizza" className="pizza-block-image" />
-            <h4 className="pizza-block-title">{title}</h4>
+            <Link key={id} to={`/pizza/${id}`}>
+                <img src={imageUrl} alt="Pizza" className="pizza-block-image" />
+                <h4 className="pizza-block-title">{title}</h4>
+            </Link>
             <div className="pizza-block-selector">
                 <ul>
                     {types &&
                         types.map((type) => (
                             <li
-                                onClick={(e) => {
-                                    e.preventDefault();
+                                onClick={() => {
                                     setActiveType(type);
                                 }}
                                 className={activeType === type ? 'active' : ''}
@@ -63,8 +65,7 @@ const PizzaBlock: FC<IPizzaBlock> = (props) => {
                     {sizes &&
                         sizes.map((size: number, i: number) => (
                             <li
-                                onClick={(e) => {
-                                    e.preventDefault();
+                                onClick={() => {
                                     setActiveSize(i);
                                 }}
                                 className={activeSize === i ? 'active' : ''}

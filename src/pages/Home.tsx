@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import qs from 'qs';
 
 import Categories from '../components/Categories';
@@ -47,7 +47,7 @@ const Home: FC = () => {
                 order,
                 category,
                 search,
-                currentPage,
+                currentPage: String(currentPage),
             })
         );
 
@@ -58,28 +58,24 @@ const Home: FC = () => {
         getPizzas();
     }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
-    useEffect(() => {
-        if (window.location.search) {
-            const params = qs.parse(window.location.search.substring(1));
+    // useEffect(() => {
+    //     if (window.location.search) {
+    //         const params = qs.parse(window.location.search.substring(1));
 
-            const sort = sortList.find(
-                (obj) => obj.sortProperty === params.sortProperty
-            );
+    //         const sort = sortList.find(
+    //             (obj) => obj.sortProperty === params.sortProperty
+    //         );
 
-            dispatch(setFilters({ ...params, sort }));
-            isSearch.current = true;
-        }
-    }, []);
+    //         dispatch(setFilters({ ...params, sort }));
+    //         isSearch.current = true;
+    //     }
+    // }, []);
 
     const skeletons = [...new Array(6)].map((_, index) => (
         <Skeleton key={index} />
     ));
 
-    const pizzas = items.map((obj: any) => (
-        <Link key={obj.id} to={`/pizza/${obj.id}`}>
-            <PizzaBlock {...obj} />
-        </Link>
-    ));
+    const pizzas = items.map((obj: any) => <PizzaBlock {...obj} />);
 
     return (
         <div className="container">
