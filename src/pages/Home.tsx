@@ -5,17 +5,15 @@ import qs from 'qs';
 
 import Categories from '../components/Categories';
 import PizzaBlock from '../components/PizzaBlock';
-import Sort, { sortList } from '../components/Sort';
+import Sort from '../components/Sort';
 import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination';
-import {
-    selectFilter,
-    setCategoryId,
-    setCurrentPage,
-    setFilters,
-} from '../redux/slices/filterSlice';
-import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
+
 import { AppDispatch } from '../redux/store';
+import { selectFilter } from '../redux/filter/selectors';
+import { selectPizzaData } from '../redux/pizza/selectors';
+import { setCategoryId, setCurrentPage } from '../redux/filter/slice';
+import { fetchPizzas } from '../redux/pizza/asyncActions';
 
 const Home: FC = () => {
     const navigate = useNavigate();

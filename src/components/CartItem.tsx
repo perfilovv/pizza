@@ -1,11 +1,8 @@
 import { useDispatch } from 'react-redux';
-import {
-    CartItem,
-    addItem,
-    minusItem,
-    removeItem,
-} from '../redux/slices/cartSlice';
 import { FC } from 'react';
+
+import { addItem, minusItem, removeItem } from '../redux/cart/slice';
+import { CartItem } from '../redux/cart/types';
 
 interface ICart {
     id: string;

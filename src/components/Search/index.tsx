@@ -1,10 +1,10 @@
 import { ChangeEvent, useCallback, useRef, useState } from 'react';
 import { IoSearchOutline, IoCloseOutline } from 'react-icons/io5';
 import debounce from 'lodash.debounce';
-import { setSearchValue } from '../../redux/slices/filterSlice';
 
 import styles from './Search.module.scss';
 import { useDispatch } from 'react-redux';
+import { setSearchValue } from '../../redux/filter/slice';
 
 const Search = () => {
     const dispatch = useDispatch();
