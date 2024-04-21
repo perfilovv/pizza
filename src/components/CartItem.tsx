@@ -50,7 +50,8 @@ const CartItemBlock: FC<ICart> = (props) => {
                 </p>
             </div>
             <div className="cart-item-count">
-                <div
+                <button
+                    disabled={count === 1}
                     onClick={onClickMinus}
                     className="button button-outline button-circle cart-item-count-minus"
                 >
@@ -70,9 +71,9 @@ const CartItemBlock: FC<ICart> = (props) => {
                             fill="#EB5A1E"
                         />
                     </svg>
-                </div>
+                </button>
                 <b>{count}</b>
-                <div
+                <button
                     onClick={onClickPlus}
                     className="button button-outline button-circle cart-item-count-plus"
                 >
@@ -92,7 +93,7 @@ const CartItemBlock: FC<ICart> = (props) => {
                             fill="#EB5A1E"
                         />
                     </svg>
-                </div>
+                </button>
             </div>
             <div className="cart-item-price">
                 <b>{price * count} ₽</b>
