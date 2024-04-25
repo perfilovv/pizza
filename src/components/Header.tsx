@@ -11,10 +11,7 @@ const Header = () => {
     const location = useLocation();
     const isMounted = useRef(false);
 
-    const totalCount = items.reduce(
-        (sum: number, item: any) => sum + item.count,
-        0
-    );
+    const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 
     useEffect(() => {
         if (isMounted) {

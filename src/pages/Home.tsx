@@ -75,9 +75,7 @@ const Home: FC = () => {
         <Skeleton key={index} />
     ));
 
-    const pizzas = items.map((obj: any) => (
-        <PizzaBlock key={obj.id} {...obj} />
-    ));
+    const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
     return (
         <div className="container">

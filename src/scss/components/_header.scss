@@ -8,13 +8,14 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+    }
 
-        @media (max-width: 645px) {
+    @media (max-width: 935px) {
+        padding: 30px 0;
+
+        .container {
             flex-direction: column;
-
-            .header-cart {
-                margin-top: 20px;
-            }
+            gap: 25px;
         }
     }
 

@@ -33,14 +33,16 @@ const FullPizza: FC = () => {
 
     return (
         <div className="container">
-            <img src={pizza.imageUrl} alt="Pizza" />
-            <h2>{pizza.title}</h2>
-            <h4>{pizza.price} P</h4>
-            <Link to="/notfoghdf">
-                <button className="button button-outline button-add">
-                    <span>Назад</span>
-                </button>
-            </Link>
+            <div className="container-fullpizza">
+                <img src={pizza.imageUrl} alt="Pizza" />
+                <h2>{pizza.title}</h2>
+                <h4>{pizza.price} P</h4>
+                <Link to="/">
+                    <button className="button button-outline button-add">
+                        <span>Назад</span>
+                    </button>
+                </Link>
+            </div>
         </div>
     );
 };
